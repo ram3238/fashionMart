@@ -19,7 +19,6 @@ class Cproducts extends Controller
       
       $data['productArr'] = $productArr;
       $data['id'] = $id;
-      // echo "<pre>"; print_r($data); die;
       return $this->showView('shop',$data);
    }
 }
