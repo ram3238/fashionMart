@@ -811,7 +811,13 @@
                                                     <img class="hover-image"
                                                         src="{{ asset('assets/images/product-image/6_2.jpg') }}" alt="Product" />
                                                 </a>
-                                                <span class="percentage">{{ $product->discount }}</span>
+                                                <span class="percentage">
+                                                    @if(fmod($product->discount, 1) == 0)
+                                                        {{ number_format($product->discount, 0) }}%
+                                                    @else
+                                                        {{ $product->discount }}%
+                                                    @endif
+                                                </span>
                                                 <a href="#" class="quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><i class="fi-rr-eye"></i></a>
@@ -858,13 +864,18 @@
                                                 <div class="ec-pro-size">
                                                     <span class="ec-pro-opt-label">Size</span>
                                                     <ul class="ec-opt-size">
-                                                        <li class="active"><a href="#" class="ec-opt-sz"
+                                                        <!-- <li class="active"><a href="#" class="ec-opt-sz"
                                                                 data-old="$25.00" data-new="$20.00"
                                                                 data-tooltip="Small">S</a></li>
                                                         <li><a href="#" class="ec-opt-sz" data-old="$27.00"
                                                                 data-new="$22.00" data-tooltip="Medium">M</a></li>
                                                         <li><a href="#" class="ec-opt-sz" data-old="$35.00"
-                                                                data-new="$30.00" data-tooltip="Extra Large">XL</a></li>
+                                                                data-new="$30.00" data-tooltip="Extra Large">XL</a></li> -->
+                                                        @foreach($productArr as $product)
+                                                            <li class="active"><a href="#" class="ec-opt-sz"
+                                                                data-old="$25.00" data-new="$20.00"
+                                                                data-tooltip="Small">{{ $product->size }}</a></li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             </div>
@@ -877,14 +888,29 @@
                         </div>
                         <!-- Ec Pagination Start -->
                         <div class="ec-pro-pagination">
-                            <span>Showing 1-12 of 21 item(s)</span>
+                            <span>Showing {{ $productArr->firstItem() }}-{{ $productArr->lastItem() }} of {{ $productArr->total() }} item(s)</span>
                             <ul class="ec-pro-pagination-inner">
-                                <li><a class="active" href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a class="next" href="#">Next <i class="ecicon eci-angle-right"></i></a></li>
+                                {{-- Render the pagination links --}}
+                                @if ($productArr->onFirstPage())
+                                    <li><a class="prev disabled" href="#">Previous</a></li>
+                                @else
+                                    <li><a class="prev" href="{{ $productArr->previousPageUrl() }}">Previous</a></li>
+                                @endif
+
+                                {{-- Loop through each page link --}}
+                                @foreach ($productArr->links()->elements[0] as $page => $url)
+                                    @if ($page == $productArr->currentPage())
+                                        <li><a class="active" href="{{ $url }}">{{ $page }}</a></li>
+                                    @else
+                                        <li><a href="{{ $url }}">{{ $page }}</a></li>
+                                    @endif
+                                @endforeach
+
+                                @if ($productArr->hasMorePages())
+                                    <li><a class="next" href="{{ $productArr->nextPageUrl() }}">Next <i class="ecicon eci-angle-right"></i></a></li>
+                                @else
+                                    <li><a class="next disabled" href="#">Next</a></li>
+                                @endif
                             </ul>
                         </div>
                         <!-- Ec Pagination End -->
