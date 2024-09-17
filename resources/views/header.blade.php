@@ -2,45 +2,47 @@
     use App\Models\Mcategory;
     $categories = Mcategory::with('subCategories')->where('status', 1)->get();
 @endphp
-<!DOCTYPE html>
-<html lang="en">
+ <!DOCTYPE html>
+ <html lang="en">
+ 
+ 
+<!-- Mirrored from maraviyainfotech.com/projects/ekka/ekka-v37/ekka-html/shop-full-width-col-5.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 Aug 2024 10:15:24 GMT -->
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-
-    <title>Simran's Fashion</title>
-    <meta name="keywords"
-        content="apparel, catalog, clean, ecommerce, ecommerce HTML, electronics, fashion, html eCommerce, html store, minimal, multipurpose, multipurpose ecommerce, online store, responsive ecommerce template, shops" />
-    <meta name="description" content="Best ecommerce html template for single and multi vendor store.">
-    <meta name="author" content="ashishmaraviya">
-
-    <!-- site Favicon -->
-    <link rel="icon" href="assets/images/favicon/favicon.png" sizes="32x32" />
-    <link rel="apple-touch-icon" href="assets/images/favicon/favicon.png" />
-    <meta name="msapplication-TileImage" content="assets/images/favicon/favicon.png" />
-
-    <!-- css Icon Font -->
-    <link rel="stylesheet" href="assets/css/vendor/ecicons.min.css" />
-
-    <!-- css All Plugins Files -->
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/animate.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/swiper-bundle.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/jquery-ui.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/countdownTimer.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/slick.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/bootstrap.css') }}" />
-
-    <!-- Main Style -->
-    <link rel="stylesheet" href="{{ asset('assets/css/demo1.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}" />
-
-    <!-- Background css -->
-    <link rel="stylesheet" id="bg-switcher-css" href="{{ asset('assets/css/backgrounds/bg-4.css') }}">
-</head>
-
-<body>
+     <meta charset="UTF-8">
+     <meta http-equiv="x-ua-compatible" content="ie=edge" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+ 
+     <title>fashion-Mart</title>
+     <meta name="keywords"
+         content="apparel, catalog, clean, ecommerce, ecommerce HTML, electronics, fashion, html eCommerce, html store, minimal, multipurpose, multipurpose ecommerce, online store, responsive ecommerce template, shops" />
+     <meta name="description" content="Best ecommerce html template for single and multi vendor store.">
+     <meta name="author" content="ashishmaraviya">
+ 
+     <!-- site Favicon -->
+     <link rel="icon" href="{{ asset('assets/images/favicon/favicon.png') }}" sizes="32x32" />
+     <link rel="apple-touch-icon" href="{{ asset('assets/images/favicon/favicon.png') }}" />
+     <meta name="msapplication-TileImage" content="assets/images/favicon/favicon.png') }}" />
+ 
+     <!-- css Icon Font -->
+     <link rel="stylesheet" href="{{ asset('assets/css/vendor/ecicons.min.css') }}" />
+ 
+     <!-- css All Plugins Files -->
+     <link rel="stylesheet" href="{{ asset('assets/css/plugins/animate.css') }}" />
+     <link rel="stylesheet" href="{{ asset('assets/css/plugins/swiper-bundle.min.css') }}" />
+     <link rel="stylesheet" href="{{ asset('assets/css/plugins/jquery-ui.min.css') }}" />
+     <link rel="stylesheet" href="{{ asset('assets/css/plugins/countdownTimer.css') }}" />
+     <link rel="stylesheet" href="{{ asset('assets/css/plugins/slick.min.css') }}" />
+     <link rel="stylesheet" href="{{ asset('assets/css/plugins/bootstrap.css') }}" />
+     <link rel="stylesheet" href="{{ asset('assets/css/plugins/nouislider.css') }}" />
+ 
+     <!-- Main Style -->
+     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}" />
+ 
+     <!-- Background css -->
+     <link rel="stylesheet" id="bg-switcher-css" href="{{ asset('assets/css/backgrounds/bg-4.css') }}">
+ </head>
+<body class="shop_page">
     <div id="ec-overlay">
         <div class="ec-ellipsis">
             <div></div>
@@ -49,6 +51,7 @@
             <div></div>
         </div>
     </div>
+
     <!-- Header start  -->
     <header class="ec-header">
         <!--Ec Header Top Start -->
@@ -132,9 +135,6 @@
                                 <span class="ec-header-count cart-count-lable">3</span>
                             </a>
                             <!-- Header Cart End -->
-                            <a href="javascript:void(0)" class="ec-header-btn ec-sidebar-toggle">
-                                <i class="fi fi-rr-apps"></i>
-                            </a>
                             <!-- Header menu Start -->
                             <a href="#ec-mobile-menu" class="ec-header-btn ec-side-toggle d-lg-none">
                                 <i class="fi fi-rr-menu-burger"></i>
@@ -155,7 +155,7 @@
                         <!-- Ec Header Logo Start -->
                         <div class="align-self-center">
                             <div class="header-logo">
-                                <a href="index.html"><img src="assets/images/logo/logo.png" alt="Site Logo" /><img
+                                <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo/logo.png') }}" alt="Site Logo" /><img
                                         class="dark-logo" src="assets/images/logo/dark-logo.png" alt="Site Logo"
                                         style="display: none;" /></a>
                             </div>
@@ -216,8 +216,8 @@
                     <!-- Ec Header Logo Start -->
                     <div class="col">
                         <div class="header-logo">
-                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Site Logo" /><img
-                                    class="dark-logo" src="assets/images/logo/dark-logo.png" alt="Site Logo"
+                            <a href="{{ route('home') }}"><img src="{{ asset('assets/images/logo/logo.png') }}" alt="Site Logo" /><img
+                                    class="dark-logo" src="{{ asset('assets/images/logo/dark-logo.png') }}" alt="Site Logo"
                                     style="display: none;" /></a>
                         </div>
                     </div>
@@ -242,9 +242,6 @@
                 <div class="row">
                     <div class="col-md-12 align-self-center">
                         <div class="ec-main-menu">
-                            <a href="javascript:void(0)" class="ec-header-btn ec-sidebar-toggle">
-                                <i class="fi fi-rr-apps"></i>
-                            </a>
                             <ul>
                                 <li><a href="{{ route('home') }}">Home</a></li>
                                 <li class="dropdown position-static"><a href="javascript:void(0)">Categories</a>
@@ -257,19 +254,19 @@
                                                         @foreach($category->subCategories as $subCategory)
                                                         <li><a href="{{ url('shop/' . $subCategory->id) }}">{{ $subCategory->sub_category_name }}</a></li>
                                                         @endforeach
-                                                    </ul>
-                                                @endforeach
+                                            </ul>
+                                            @endforeach
                                         </li>
                                         <li>
                                             <ul class="ec-main-banner w-100">
                                                 <li><a class="p-0" href="shop-left-sidebar-col-3.html"><img
-                                                            class="img-responsive" src="assets/images/menu-banner/2.jpg"
+                                                            class="img-responsive" src="assets/images/menu-banner/1.jpg"
                                                             alt=""></a></li>
                                                 <li><a class="p-0" href="shop-left-sidebar-col-4.html"><img
-                                                            class="img-responsive" src="assets/images/menu-banner/3.jpg"
+                                                            class="img-responsive" src="assets/images/menu-banner/2.jpg"
                                                             alt=""></a></li>
                                                 <li><a class="p-0" href="shop-right-sidebar-col-3.html"><img
-                                                            class="img-responsive" src="assets/images/menu-banner/1.jpg"
+                                                            class="img-responsive" src="assets/images/menu-banner/3.jpg"
                                                             alt=""></a></li>
                                                 <li><a class="p-0" href="shop-right-sidebar-col-4.html"><img
                                                             class="img-responsive" src="assets/images/menu-banner/4.jpg"
@@ -280,7 +277,7 @@
                                 </li>
                                 <li class="dropdown"><a href="javascript:void(0)">Products</a>
                                     <ul class="sub-menu">
-                                        @foreach($categories as $category)
+                                         @foreach($categories as $category)
                                         <li class="dropdown position-static">
                                             <a href="javascript:void(0)">{{ $category->category_name }}
                                                 <i class="ecicon eci-angle-right"></i>
@@ -419,28 +416,6 @@
                                     </ul>
                                 </li>
                                 <li><a href="offer.html">Hot Offers</a></li>
-                                <li class="dropdown scroll-to"><a href="javascript:void(0)"><i
-                                            class="fi fi-rr-sort-amount-down-alt"></i></a>
-                                    <ul class="sub-menu">
-                                        <li class="menu_title">Scroll To Section</li>
-                                        <li><a href="javascript:void(0)" data-scroll="collection" class="nav-scroll">Top
-                                                Collection</a></li>
-                                        <li><a href="javascript:void(0)" data-scroll="categories"
-                                                class="nav-scroll">Categories</a></li>
-                                        <li><a href="javascript:void(0)" data-scroll="offers"
-                                                class="nav-scroll">Offers</a></li>
-                                        <li><a href="javascript:void(0)" data-scroll="vendors" class="nav-scroll">Top
-                                                Vendors</a></li>
-                                        <li><a href="javascript:void(0)" data-scroll="services"
-                                                class="nav-scroll">Services</a></li>
-                                        <li><a href="javascript:void(0)" data-scroll="arrivals" class="nav-scroll">New
-                                                Arrivals</a></li>
-                                        <li><a href="javascript:void(0)" data-scroll="reviews" class="nav-scroll">Client
-                                                Review</a></li>
-                                        <li><a href="javascript:void(0)" data-scroll="insta"
-                                                class="nav-scroll">Instagram Feed</a></li>
-                                    </ul>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -457,7 +432,7 @@
             <div class="ec-menu-inner">
                 <div class="ec-menu-content">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li><a href="javascript:void(0)">Categories</a>
                             <ul class="sub-menu">
                                 <li>

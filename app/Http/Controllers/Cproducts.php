@@ -16,9 +16,14 @@ class Cproducts extends Controller
    public function showProductsBySubcategory(Request $request, $id){
     
       $productArr = $this->Mproducts->getProduct($request, $id);
-      
+      // echo "<pre>"; print_r($productArr); die;
       $data['productArr'] = $productArr;
       $data['id'] = $id;
       return $this->showView('shop',$data);
+   }
+
+   public function productDetails(){
+
+      return $this->showView('product_left_sidebar');
    }
 }

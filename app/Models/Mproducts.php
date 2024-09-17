@@ -34,22 +34,25 @@ class Mproducts extends Mbase
         $page = $request->input('page', 1);
         $perPage = $request->input('per_page', 5);
 
+        // Build the query
         $query = DB::table('tbl_product')
-                ->select(
-                    'tbl_product.id as product_id', 
-                    'tbl_product.sku',
-                    'tbl_product_details.*', 
-                    'tbl_product_image.*'
-                )
-                ->where('tbl_product.sub_category_id', $id)
-                ->where('tbl_product_details.status', 1)
-                ->where('tbl_product_image.main_image', 1)
-                ->leftJoin('tbl_product_details', 'tbl_product.id', '=', 'tbl_product_details.product_id') 
-                ->leftJoin('tbl_product_image', 'tbl_product_details.id', '=', 'tbl_product_image.product_id'); 
-          //echo $query->toSql(); die;
+            ->select(
+                'tbl_product.id as product_id', 
+                'tbl_product.sku',
+                'tbl_product_details.*', 
+                'tbl_product_image.*'
+            )
+            ->leftJoin('tbl_product_details', 'tbl_product.id', '=', 'tbl_product_details.product_id')
+            ->leftJoin('tbl_product_image', 'tbl_product_details.id', '=', 'tbl_product_image.product_id')
+            ->where('tbl_product.sub_category_id', $id)
+            ->where('tbl_product_details.status', 1)
+            ->where('tbl_product_image.main_image', 1);
+
+        // Apply pagination
         $products = $query->paginate($perPage, ['*'], 'page', $page);
 
         return $products;
     }
+
 
 }
