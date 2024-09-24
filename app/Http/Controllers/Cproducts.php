@@ -23,7 +23,6 @@ class Cproducts extends Controller
    }
 
    public function productDetails(){
-      echo "ghghn"; die;
       return $this->showView('product_left_sidebar');
    }
 }
